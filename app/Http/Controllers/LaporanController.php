@@ -16,6 +16,9 @@ class LaporanController extends Controller
         return view('pages.laporan.user-laporan');
     }
 
+
+    
+
     /**
      * Show the form for creating a new resource.
      *

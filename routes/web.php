@@ -10,6 +10,8 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/lapor', 'HandlerController@landing')->name('lapor');
+Route::get('/', 'HandlerController@landing')->name('landing');
 
 Route::get('/login', 'AuthController@getLogin')
         ->name('getLogin')
@@ -23,20 +25,17 @@ Route::post('p/reg','AuthController@postRegister')
 
 Route::get('/init', 'HandlerController@init')->name('init')->middleware('auth');
 
-Route::get('/dashboard', 'HandlerController@dashboard')->name('dashboard');
-
-Route::resource('laporan', 'LaporanController');
-
-Route::post('/logout', 'AuthController@logout')->name('logout')->middleware('auth');
+Route::get('/logout', 'AuthController@logout')->name('logout')->middleware('auth');
+Route::get('/logout/get','AuthController@logout')->name('logout.get');
 
 Route::middleware('auth')->group(function (){
+        Route::get('/dashboard', 'HandlerController@dashboard')->name('dashboard');
+        Route::resource('laporan', 'LaporanController');
 
+        Route::resource('laporan','LaporanController');
+        Route::get('/user-laporan','LaporanController@userLaporan')->name('laporan.user');
 });
-
-// Route::get('/login', function () {
-//     return view('auth.login');
-// });
 
 Route::get('/register', function () {
     return view('auth.register');
-})->name('register')->middleware('guest');
+})->name('getRegister')->middleware('guest');

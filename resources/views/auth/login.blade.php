@@ -87,7 +87,7 @@
 						Belum Punya Akun?
 					</div>
 					<div class="d-flex">
-						<a href="{{route('register')}}" class="text-primary mx-auto">Register</a>
+						<a href="{{route('getRegister')}}" class="text-primary mx-auto">Register</a>
 					</div>
 					</form>
 
